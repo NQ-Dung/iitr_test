@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', 'LoginController@login');
 Route::post('/login', 'LoginController@doLogin');
 Route::get('/list', 'ListController@index');
+Route::get('/getList', 'ListController@ajaxList');
