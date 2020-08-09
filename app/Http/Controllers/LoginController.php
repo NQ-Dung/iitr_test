@@ -27,11 +27,11 @@ class LoginController extends Controller
 
         // Checking password
         if (empty($user) || !Hash::check($password, $user->password)) {
-            return redirect('login');
+            return redirect('login')->withErrors(['Wrong user credential info.']);
         }
 
         // TODO
-        session(['logged' => 'true']);
+        session(['user_id' => $user->id]);
 
         return redirect('list');
     }

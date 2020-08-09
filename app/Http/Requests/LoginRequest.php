@@ -28,14 +28,14 @@ class LoginRequest extends FormRequest
             'name' => 'required',
             'email' => [
                 'required',
-                // function ($attribute, $value, $fail) {
-                //     // Common email format regEx, google search
-                //     $pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
+                function ($attribute, $value, $fail) {
+                    // Common email format regEx, google search
+                    $pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
 
-                //     if (preg_match($pattern, $value)) {
-                //         return $fail('The ' . $attribute . 'is in wrong format');
-                //     }
-                // }
+                    if (!preg_match($pattern, $value)) {
+                        return $fail('The ' . $attribute . 'is in wrong format.');
+                    }
+                }
             ],
             'password' => 'required',
         ];

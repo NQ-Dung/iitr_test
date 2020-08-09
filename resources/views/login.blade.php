@@ -1,4 +1,9 @@
 <h1>Login<h1>
+@if($errors->any())
+@foreach ($errors->all() as $error)
+<h4 class="error">{{$error}}</h4>
+@endforeach
+@endif
 {{ Form::open(['url' => 'login']) }}
 <table style="padding-bottom:15px">
     <tr>
@@ -16,3 +21,11 @@
 </table>
 {{ Form::submit('Login') }}
 {{ Form::close('login') }}
+
+<style>
+h4.error {
+    color: red;
+    font-style: italic;
+    padding-left: 50px;
+}
+</style>
